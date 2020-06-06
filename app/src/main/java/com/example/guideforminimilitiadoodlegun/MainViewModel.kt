@@ -24,7 +24,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         MutableLiveData<Event<Boolean>>()
     val showAdvertEvent: LiveData<Event<Boolean>> = _showAdvertEvent
 
-    var showAdvertState = true
+    var showAdvertState = false
 
     private val _navigateToDetailEvent = MutableLiveData<Event<Book>>()
     val navigateToDetailEvent: LiveData<Event<Book>> = _navigateToDetailEvent
@@ -37,7 +37,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         viewModelScope.launch {
-            delay(2000)
+            delay(1000)
             _splashState.postValue(
                 Event(
                     SplashState.MainActivity()
