@@ -42,6 +42,7 @@ class TaskDiffCallback : DiffUtil.ItemCallback<Book>() {
 @BindingAdapter("imageResource")
 fun setImageResource(imageView: ImageView, resource: Int) {
     imageView.setImageResource(resource)
+
 }
 
 fun getAdRequest(): AdRequest? {

@@ -75,32 +75,47 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             Book(
                 title = getString(R.string.book_2_title),
                 body = getString(R.string.book_2_body),
-                imageId = R.drawable.image3
+                imageId = R.drawable.foot3
             ),
             Book(
                 title = getString(R.string.book_3_title),
                 body = getString(R.string.book_3_body),
-                imageId = R.drawable.image5
+                imageId = R.drawable.foot4
             ),
             Book(
                 title = getString(R.string.book_4_title),
                 body = getString(R.string.book_4_body),
-                imageId = R.drawable.image4
+                imageId = R.drawable.foot4
             ),
             Book(
                 title = getString(R.string.book_5_title),
                 body = getString(R.string.book_5_body),
-                imageId = R.drawable.image7
+                imageId = R.drawable.foot5
             ),
             Book(
                 title = getString(R.string.book_6_title),
                 body = getString(R.string.book_6_body),
-                imageId = R.drawable.image6
+                imageId = R.drawable.foot6
             ),
             Book(
                 title = getString(R.string.book_7_title),
                 body = getString(R.string.book_7_body),
-                imageId = R.drawable.image2
+                imageId = R.drawable.foot7
+            ),
+            Book(
+                title = getString(R.string.book_8_title),
+                body = getString(R.string.book_8_body),
+                imageId = R.drawable.foot8
+            ),
+            Book(
+                title = getString(R.string.book_9_title),
+                body = getString(R.string.book_9_body),
+                imageId = R.drawable.foot9
+            ),
+            Book(
+                title = getString(R.string.book_10_title),
+                body = getString(R.string.book_10_body),
+                imageId = R.drawable.foot10
             )
         )
     }

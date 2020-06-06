@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.guideforminimilitiadoodlegun.MainViewModel
 import com.example.guideforminimilitiadoodlegun.databinding.FragmentBookDetailBinding
 import com.example.guideforminimilitiadoodlegun.util.EventObserver
@@ -49,6 +50,13 @@ class ScreenSlideFirstPageFragment : Fragment() {
         viewModel.showAdvertEvent.observe(viewLifecycleOwner, EventObserver {
             showInterstitialAdvertSafe(viewModel.interstitialAd)
         })
+        viewModel.navigateToDetailEvent.value?.peekContent()?.imageId?.let {
+            Glide
+                .with(this)
+                .load(it)
+                .fitCenter()
+                .into(image)
+        }
     }
 
     companion object {

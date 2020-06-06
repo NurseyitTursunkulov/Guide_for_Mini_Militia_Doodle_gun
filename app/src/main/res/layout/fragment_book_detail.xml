@@ -50,12 +50,10 @@
                 <ImageView
                     android:id="@+id/image"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:contentDescription="content_description_media"
-                    android:fitsSystemWindows="true"
-                    android:scaleType="centerCrop"
-                    app:imageResource="@{bookInfo.imageId}"
-                    tools:src="@drawable/foot3" />
+
+                    tools:src="@drawable/foot2" />
 
                 <View
                     android:layout_width="match_parent"
