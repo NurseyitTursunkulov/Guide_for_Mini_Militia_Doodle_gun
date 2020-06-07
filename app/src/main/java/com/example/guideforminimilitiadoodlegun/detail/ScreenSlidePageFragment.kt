@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import coil.api.load
+import com.bumptech.glide.Glide
 import com.example.guideforminimilitiadoodlegun.MainViewModel
 import com.example.guideforminimilitiadoodlegun.R
 import com.example.guideforminimilitiadoodlegun.util.EventObserver
@@ -43,7 +43,11 @@ class ScreenSlidePageFragment :
         })
         showBannerAdvert(ad_view_detail_pager, viewModel.showAdvertState)
 
-        imageView.load(getRandomImage())
+        Glide
+            .with(this)
+            .load(getRandomImage())
+            .fitCenter()
+            .into(imageView)
 
         showRateMeDialog()
     }
