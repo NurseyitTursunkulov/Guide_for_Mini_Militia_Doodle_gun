@@ -8,33 +8,33 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.guideforminimilitiadoodlegun.util.EventObserver
 import com.example.guideforminimilitiadoodlegun.util.divideTextToParts
-import com.example.guideforminimilitiadoodlegun.util.initAdvert
+import com.example.guideforminimilitiadoodlegun.util.initAdvertgun
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class SplashFragment : Fragment(R.layout.splash_fragment) {
+class SplashFragmentGun : Fragment(R.layout.splash_fragmentgun) {
 
-    private val viewModel: MainViewModel by sharedViewModel()
+    private val viewModel: MuhamedSAVViewModel by sharedViewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.adView = initAdvert(requireContext())
+        viewModel.adView = initAdvertgun(requireContext())
         val content = viewModel.items.value
         content?.let { bookList ->
             divideTextToParts(bookList)
         }
 
-        viewModel.splashState.observe(viewLifecycleOwner,
+        viewModel.splashStateGun.observe(viewLifecycleOwner,
             EventObserver {
                 when (it) {
-                    is SplashState.MainActivity -> {
+                    is SplashStateGun.MainActivityGun -> {
                         findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
                     }
                 }
             })
-        viewModel.showAdvertEvent.observe(viewLifecycleOwner, EventObserver {
-            if (viewModel.interstitialAd.isLoaded) {
-                viewModel.interstitialAd.show()
+        viewModel.showAdvertGunEvent.observe(viewLifecycleOwner, EventObserver {
+            if (viewModel.interstitialAdGun.isLoaded) {
+                viewModel.interstitialAdGun.show()
             } else {
                 Log.d("Nurs", "splash The interstitial wasn't loaded yet.")
             }

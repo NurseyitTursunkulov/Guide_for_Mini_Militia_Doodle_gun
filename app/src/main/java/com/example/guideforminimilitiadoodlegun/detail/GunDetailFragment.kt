@@ -9,32 +9,32 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.guideforminimilitiadoodlegun.MainViewModel
+import com.example.guideforminimilitiadoodlegun.MuhamedSAVViewModel
 import com.example.guideforminimilitiadoodlegun.R
-import com.example.guideforminimilitiadoodlegun.util.removeFullScreen
-import kotlinx.android.synthetic.main.activity_screen_slide.*
-import kotlinx.android.synthetic.main.fragment_book_detail.*
+import com.example.guideforminimilitiadoodlegun.util.removeFullScreengun
+import kotlinx.android.synthetic.main.activity_screen_slidegun.*
+import kotlinx.android.synthetic.main.fragment_book_detailun.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class BookDetailFragment : Fragment(R.layout.activity_screen_slide) {
+class GunDetailFragment : Fragment(R.layout.activity_screen_slidegun) {
 
-    val viewModel: MainViewModel by sharedViewModel()
+    val gunviewModel: MuhamedSAVViewModel by sharedViewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        removeFullScreen()
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        removeFullScreengun()
+        (activity as AppCompatActivity).setSupportActionBar(toolbar_gun)
         (activity as AppCompatActivity).supportActionBar?.show()
-        pager.adapter = ScreenSlidePagerAdapter(requireActivity())
-        initPendingIndicatorView()
+        gun_pager.adapter = ScreenSlidePagerAdapter(requireActivity())
+        initPendingIndicatorViewgun()
 
 
-        pager.registerOnPageChangeCallback(
+        gun_pager.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    pageIndicatorView.selection = position
+                    gunpageIndicatorView.selection = position
                 }
             })
     }
@@ -45,14 +45,14 @@ class BookDetailFragment : Fragment(R.layout.activity_screen_slide) {
         // This callback will only be called when MyFragment is at least Started.
         requireActivity().onBackPressedDispatcher.addCallback(this) {
             // Handle the back button event
-            if (pager.currentItem == 0) {
+            if (gun_pager.currentItem == 0) {
                 // If the user is currently looking at the first step, allow the system to handle the
                 // Back button. This calls finish() on this activity and pops the back stack.
-                this@BookDetailFragment.findNavController().navigateUp()
+                this@GunDetailFragment.findNavController().navigateUp()
             } else {
                 // Otherwise, select the previous step.
-                pager.currentItem = pager.currentItem - 1
-                this@BookDetailFragment.findNavController().navigateUp()
+                gun_pager.currentItem = gun_pager.currentItem - 1
+                this@GunDetailFragment.findNavController().navigateUp()
             }
         }
 
@@ -61,16 +61,17 @@ class BookDetailFragment : Fragment(R.layout.activity_screen_slide) {
 
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int =
-            viewModel.navigateToDetailEvent.value?.peekContent()?.listOfContentPerPage?.size ?: 1
+            gunviewModel.navigateToDetailGunEvent.value?.peekContent()?.listOfContentPerPage?.size
+                ?: 1
 
         override fun createFragment(position: Int): Fragment {
             val content =
-                viewModel.navigateToDetailEvent.value?.peekContent()?.listOfContentPerPage?.get(
+                gunviewModel.navigateToDetailGunEvent.value?.peekContent()?.listOfContentPerPage?.get(
                     position
                 ) ?: ""
             return when (position) {
-                0 -> ScreenSlideFirstPageFragment.newInstance(content)
-                else -> ScreenSlidePageFragment.newInstance(
+                0 -> GunScreenSlideFirstPageFragment.newInstance(content)
+                else -> GunScreenSlidePageFragment.newInstance(
                     position,
                     content
                 )

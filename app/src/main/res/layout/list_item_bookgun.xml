@@ -9,11 +9,11 @@
 
         <variable
             name="task"
-            type="com.example.guideforminimilitiadoodlegun.bookList.Book" />
+            type="com.example.guideforminimilitiadoodlegun.bookList.Gun" />
 
         <variable
             name="viewmodel"
-            type="com.example.guideforminimilitiadoodlegun.MainViewModel" />
+            type="com.example.guideforminimilitiadoodlegun.MuhamedSAVViewModel" />
     </data>
 
     <LinearLayout
@@ -25,8 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:foreground="@drawable/book_selector"
-            android:onClick="@{() -> viewmodel.openBook(task)}"
+            android:foreground="@drawable/gun_selector"
+            android:onClick="@{() -> viewmodel.openBookGun(task)}"
             app:cardCornerRadius="8dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +39,7 @@
                     android:layout_height="0dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@drawable/bookdash_placeholder"
+                    android:src="@drawable/gundash_placeholder"
                     app:layout_constraintBottom_toTopOf="@+id/textViewBookName"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -58,8 +58,8 @@
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
                     android:text="@{task.title}"
-                    android:textColor="#212121"
-                    android:textSize="16sp"
+                    android:textColor="#191919"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -11,14 +11,14 @@ import com.google.android.gms.ads.RequestConfiguration
 import java.util.*
 
 
-fun MainFragment.initAdapter() {
-    val viewModel = viewDataBinding.viewmodel
+fun MainGunFragment.initgunAdapter() {
+    val viewModel = viewgunDataBinding.viewmodel
     if (viewModel != null) {
-        listAdapter = TasksAdapter(viewModel)
-        viewDataBinding.recyclerViewBooks.adapter = listAdapter
-        viewDataBinding.recyclerViewBooks.layoutManager = GridLayoutManager(requireContext(), 2)
-        if (viewModel.showAdvertState)
-            makeOneSpanForAdView()
+        listAdapter = GunsAdapter(viewModel)
+        viewgunDataBinding.recyclerViewBooks.adapter = listAdapter
+        viewgunDataBinding.recyclerViewBooks.layoutManager = GridLayoutManager(requireContext(), 2)
+        if (viewModel.showAdvertStateGun)
+            gunmakeOneSpanForAdView()
         viewModel.items.observe(viewLifecycleOwner, Observer {
             listAdapter.submitList(it)
         })
@@ -27,13 +27,13 @@ fun MainFragment.initAdapter() {
     }
 }
 
-class TaskDiffCallback : DiffUtil.ItemCallback<Book>() {
+class GunDiffCallback : DiffUtil.ItemCallback<Gun>() {
 
-    override fun areItemsTheSame(oldItem: Book, newItem: Book): Boolean {
+    override fun areItemsTheSame(oldItem: Gun, newItem: Gun): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Book, newItem: Book): Boolean {
+    override fun areContentsTheSame(oldItem: Gun, newItem: Gun): Boolean {
         return oldItem == newItem
     }
 
@@ -45,7 +45,7 @@ fun setImageResource(imageView: ImageView, resource: Int) {
 
 }
 
-fun getAdRequest(): AdRequest? {
+fun gungetAdRequest(): AdRequest? {
     val adRequest = AdRequest.Builder().build()
     val testDeviceIds = Arrays.asList("F5E4CD8EA025C4062D9E4BE54D002D25")
     val configuration =
@@ -54,8 +54,8 @@ fun getAdRequest(): AdRequest? {
     return adRequest
 }
 
-private fun MainFragment.makeOneSpanForAdView() {
-    (viewDataBinding.recyclerViewBooks.layoutManager as GridLayoutManager)
+private fun MainGunFragment.gunmakeOneSpanForAdView() {
+    (viewgunDataBinding.recyclerViewBooks.layoutManager as GridLayoutManager)
         .spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
         override fun getSpanSize(position: Int): Int {
             return when (position) {

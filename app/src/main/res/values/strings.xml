@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Guide for Winner</string>
+    <string name="app_name" translatable="false">Winner\'s guide</string>
     <string name="app_name_for_title">Guide for Mini Militia Doodle gun</string>
     <string name="hello_world">Hello World!</string>
     <string name="privacy_policy">Privacy Policy</string>

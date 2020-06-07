@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.guideforminimilitiadoodlegun.bookList.Book
+import com.example.guideforminimilitiadoodlegun.bookList.Gun
 import com.example.guideforminimilitiadoodlegun.util.Event
 import com.example.guideforminimilitiadoodlegun.util.getString
 import com.google.android.gms.ads.AdView
@@ -13,114 +13,114 @@ import com.google.android.gms.ads.InterstitialAd
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
-    private val _splashState = MutableLiveData<Event<SplashState>>()
-    val splashState: LiveData<Event<SplashState>> = _splashState
+class MuhamedSAVViewModel(application: Application) : AndroidViewModel(application) {
+    private val _splashState = MutableLiveData<Event<SplashStateGun>>()
+    val splashStateGun: LiveData<Event<SplashStateGun>> = _splashState
 
     var adView: AdView? = null
-    lateinit var interstitialAd: InterstitialAd
+    lateinit var interstitialAdGun: InterstitialAd
 
     private val _showAdvertEvent: MutableLiveData<Event<Boolean>> =
         MutableLiveData<Event<Boolean>>()
-    val showAdvertEvent: LiveData<Event<Boolean>> = _showAdvertEvent
+    val showAdvertGunEvent: LiveData<Event<Boolean>> = _showAdvertEvent
 
-    var showAdvertState = false
+    var showAdvertStateGun = false
 
-    private val _navigateToDetailEvent = MutableLiveData<Event<Book>>()
-    val navigateToDetailEvent: LiveData<Event<Book>> = _navigateToDetailEvent
+    private val _navigateToDetailEvent = MutableLiveData<Event<Gun>>()
+    val navigateToDetailGunEvent: LiveData<Event<Gun>> = _navigateToDetailEvent
 
-    private val _items = MutableLiveData<List<Book>>().apply {
-        value = getBooksList()
+    private val _items = MutableLiveData<List<Gun>>().apply {
+        value = getBooksListGun()
     }
 
-    val items: LiveData<List<Book>> = _items
+    val items: LiveData<List<Gun>> = _items
 
     init {
         viewModelScope.launch {
-            delay(1000)
+            delay(3000)
             _splashState.postValue(
                 Event(
-                    SplashState.MainActivity()
+                    SplashStateGun.MainActivityGun()
                 )
             )
-            showAdvert()
+            showGunAdvert()
         }
     }
 
-    fun showAdvert() {
-        if (showAdvertState)
-            _showAdvertEvent.postValue(Event(showAdvertState))
+    fun showGunAdvert() {
+        if (showAdvertStateGun)
+            _showAdvertEvent.postValue(Event(showAdvertStateGun))
     }
 
-    fun openBook(book: Book) {
+    fun openBookGun(gun: Gun) {
         _navigateToDetailEvent.postValue(
             Event(
-                book
+                gun
             )
         )
     }
 
-    private fun getBooksList(): List<Book> {
+    private fun getBooksListGun(): List<Gun> {
         return listOf(
-            Book(
+            Gun(
                 title = getString(R.string.book1title),
                 body = getString(R.string.book1body),
-                imageId = R.drawable.foot1
+                imageId = R.drawable.gun1
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_1_title),
                 body = getString(R.string.book_1_body),
-                imageId = R.drawable.foot2
+                imageId = R.drawable.gun2
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_2_title),
                 body = getString(R.string.book_2_body),
-                imageId = R.drawable.foot3
+                imageId = R.drawable.gun3
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_3_title),
                 body = getString(R.string.book_3_body),
-                imageId = R.drawable.foot4
+                imageId = R.drawable.gun4
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_4_title),
                 body = getString(R.string.book_4_body),
-                imageId = R.drawable.foot4
+                imageId = R.drawable.gun4
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_5_title),
                 body = getString(R.string.book_5_body),
-                imageId = R.drawable.foot5
+                imageId = R.drawable.gun5
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_6_title),
                 body = getString(R.string.book_6_body),
-                imageId = R.drawable.foot6
+                imageId = R.drawable.gun6
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_7_title),
                 body = getString(R.string.book_7_body),
-                imageId = R.drawable.foot7
+                imageId = R.drawable.gun7
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_8_title),
                 body = getString(R.string.book_8_body),
-                imageId = R.drawable.foot8
+                imageId = R.drawable.gun8
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_9_title),
                 body = getString(R.string.book_9_body),
-                imageId = R.drawable.foot9
+                imageId = R.drawable.gun9
             ),
-            Book(
+            Gun(
                 title = getString(R.string.book_10_title),
                 body = getString(R.string.book_10_body),
-                imageId = R.drawable.foot10
+                imageId = R.drawable.gun10
             )
         )
     }
 }
 
-sealed class SplashState {
-    class MainActivity : SplashState()
+sealed class SplashStateGun {
+    class MainActivityGun : SplashStateGun()
 }

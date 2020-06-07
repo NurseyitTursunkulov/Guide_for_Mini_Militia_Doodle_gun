@@ -12,7 +12,7 @@
 
         <variable
             name="bookInfo"
-            type="com.example.guideforminimilitiadoodlegun.bookList.Book" />
+            type="com.example.guideforminimilitiadoodlegun.bookList.Gun" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/appbackground" />
+            android:src="@drawable/appbackgroundgun" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -53,29 +53,29 @@
                     android:layout_height="wrap_content"
                     android:contentDescription="content_description_media"
 
-                    tools:src="@drawable/foot2" />
+                    tools:src="@drawable/gun2" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="88dp"
-                    android:background="@drawable/scrim_top"
+                    android:background="@drawable/scrim_topgun"
                     app:layout_collapseMode="pin" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="88dp"
                     android:layout_gravity="bottom"
-                    android:background="@drawable/scrim_bottom" />
+                    android:background="@drawable/scrim_bottomgun" />
 
                 <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/toolbar_gun"
                     style="@style/Widget.MaterialComponents.Toolbar.Surface"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@android:color/transparent"
                     app:layout_collapseMode="pin"
                     app:layout_scrollFlags="scroll|enterAlways|snap"
-                    app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
+                    app:navigationIcon="@drawable/ic_baseline_arrow_back_24gun" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -134,7 +134,7 @@
                             android:text="@{bookInfo.title}"
                             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
                             android:textColor="@color/text_secondary_dark"
-                            android:textSize="22sp"
+                            android:textSize="23sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +152,7 @@
                             android:layout_marginRight="16dp"
                             android:layout_marginBottom="16dp"
                             android:textColor="@color/text_color_primary_dark"
-                            android:textSize="20sp"
+                            android:textSize="22sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/textview_about_heading"

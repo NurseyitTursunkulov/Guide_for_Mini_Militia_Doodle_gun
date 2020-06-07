@@ -2,7 +2,7 @@ package com.example.guideforminimilitiadoodlegun.bookList
 
 import java.util.*
 
-data class Book(
+data class Gun(
     val title: String = "dfrfa",
     val id: String = UUID.randomUUID().toString(),
     var imageId: Int,

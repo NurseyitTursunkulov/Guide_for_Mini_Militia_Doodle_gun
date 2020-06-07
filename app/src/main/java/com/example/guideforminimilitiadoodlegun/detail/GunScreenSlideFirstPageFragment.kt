@@ -7,21 +7,21 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.guideforminimilitiadoodlegun.MainViewModel
-import com.example.guideforminimilitiadoodlegun.databinding.FragmentBookDetailBinding
+import com.example.guideforminimilitiadoodlegun.MuhamedSAVViewModel
+import com.example.guideforminimilitiadoodlegun.databinding.FragmentBookDetailunBinding
 import com.example.guideforminimilitiadoodlegun.util.EventObserver
-import kotlinx.android.synthetic.main.fragment_book_detail.*
+import kotlinx.android.synthetic.main.fragment_book_detailun.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class ScreenSlideFirstPageFragment : Fragment() {
-    lateinit var content: String
-    lateinit var viewDataBinding: FragmentBookDetailBinding
-    val viewModel: MainViewModel by sharedViewModel()
+class GunScreenSlideFirstPageFragment : Fragment() {
+    lateinit var guncontent: String
+    lateinit var gunviewDataBinding: FragmentBookDetailunBinding
+    val gunviewModel: MuhamedSAVViewModel by sharedViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            content = it.getString(CONTENT, "")
+            guncontent = it.getString(CONTENT, "")
         }
     }
 
@@ -29,28 +29,28 @@ class ScreenSlideFirstPageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel.showAdvert()
+        gunviewModel.showGunAdvert()
         (activity as AppCompatActivity).supportActionBar?.show()
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        viewDataBinding = FragmentBookDetailBinding.inflate(inflater, container, false).apply {
-            bookInfo = viewModel.navigateToDetailEvent.value?.peekContent()
+        (activity as AppCompatActivity).setSupportActionBar(toolbar_gun)
+        gunviewDataBinding = FragmentBookDetailunBinding.inflate(inflater, container, false).apply {
+            bookInfo = gunviewModel.navigateToDetailGunEvent.value?.peekContent()
         }
-        return viewDataBinding.root
+        return gunviewDataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        content_text_view.text = content
-        toolbar.setNavigationOnClickListener {
+        content_text_view.text = guncontent
+        toolbar_gun.setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
 
-        showBannerAdvert(ad_view_detail, viewModel.showAdvertState)
+        showBannerAdvert(ad_view_detail, gunviewModel.showAdvertStateGun)
 
-        viewModel.showAdvertEvent.observe(viewLifecycleOwner, EventObserver {
-            showInterstitialAdvertSafe(viewModel.interstitialAd)
+        gunviewModel.showAdvertGunEvent.observe(viewLifecycleOwner, EventObserver {
+            showInterstitialGunAdvertSafe(gunviewModel.interstitialAdGun)
         })
-        viewModel.navigateToDetailEvent.value?.peekContent()?.imageId?.let {
+        gunviewModel.navigateToDetailGunEvent.value?.peekContent()?.imageId?.let {
             Glide
                 .with(this)
                 .load(it)
@@ -64,7 +64,7 @@ class ScreenSlideFirstPageFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(content: String) =
-            ScreenSlideFirstPageFragment().apply {
+            GunScreenSlideFirstPageFragment().apply {
                 arguments = Bundle().apply {
                     putString(CONTENT, content)
                 }

@@ -21,13 +21,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.example.guideforminimilitiadoodlegun.MainViewModel
+import com.example.guideforminimilitiadoodlegun.MuhamedSAVViewModel
 import com.example.guideforminimilitiadoodlegun.R
-import com.example.guideforminimilitiadoodlegun.databinding.ListItemBookBinding
+import com.example.guideforminimilitiadoodlegun.databinding.ListItemBookgunBinding
 import com.google.android.gms.ads.AdView
 
-class TasksAdapter(private val viewModel: MainViewModel) :
-    ListAdapter<Book, RecyclerView.ViewHolder>(TaskDiffCallback()) {
+class GunsAdapter(private val viewModel: MuhamedSAVViewModel) :
+    ListAdapter<Gun, RecyclerView.ViewHolder>(GunDiffCallback()) {
     private val MENU_ITEM_VIEW_TYPE = 0
 
     // The banner ad view type.
@@ -51,7 +51,7 @@ class TasksAdapter(private val viewModel: MainViewModel) :
                 val bannerLayoutView = LayoutInflater.from(
                     parent.context
                 ).inflate(
-                    R.layout.banner_ad_container,
+                    R.layout.banner_ad_containergun,
                     parent, false
                 )
                 AdViewHolder(bannerLayoutView)
@@ -60,20 +60,20 @@ class TasksAdapter(private val viewModel: MainViewModel) :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (position == 0 && viewModel.showAdvertState)
+        return if (position == 0 && viewModel.showAdvertStateGun)
             BANNER_AD_VIEW_TYPE else MENU_ITEM_VIEW_TYPE
     }
 
-    class ViewHolder private constructor(val binding: ListItemBookBinding) :
+    class ViewHolder private constructor(val binding: ListItemBookgunBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(viewModel: MainViewModel, item: Book) {
+        fun bind(viewModel: MuhamedSAVViewModel, item: Gun) {
 
             binding.viewmodel = viewModel
             binding.task = item
             binding.imageViewBookCover.load(item.imageId) {
                 crossfade(true)
-                placeholder(R.drawable.bookdash_placeholder)
+                placeholder(R.drawable.gundash_placeholder)
             }
             binding.executePendingBindings()
         }
@@ -81,7 +81,7 @@ class TasksAdapter(private val viewModel: MainViewModel) :
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemBookBinding.inflate(layoutInflater, parent, false)
+                val binding = ListItemBookgunBinding.inflate(layoutInflater, parent, false)
 
                 return ViewHolder(binding)
             }
@@ -92,7 +92,7 @@ class TasksAdapter(private val viewModel: MainViewModel) :
         RecyclerView.ViewHolder(view) {
         var ad_view: AdView = view.findViewById(R.id.ad_viewR)
         fun bind() {
-            val adRequest = getAdRequest()
+            val adRequest = gungetAdRequest()
             ad_view.loadAd(adRequest)
         }
     }

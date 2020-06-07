@@ -8,59 +8,63 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.guideforminimilitiadoodlegun.MainViewModel
+import com.example.guideforminimilitiadoodlegun.MuhamedSAVViewModel
 import com.example.guideforminimilitiadoodlegun.R
-import com.example.guideforminimilitiadoodlegun.databinding.FragmentMainBinding
 import com.example.guideforminimilitiadoodlegun.util.EventObserver
-import com.example.guideforminimilitiadoodlegun.util.removeFullScreen
+import com.example.guideforminimilitiadoodlegun.util.removeFullScreengun
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class MainFragment : Fragment() {
+class MainGunFragment : Fragment() {
 
-    lateinit var viewDataBinding: FragmentMainBinding
-    lateinit var listAdapter: TasksAdapter
-    val viewModel: MainViewModel by sharedViewModel()
+    lateinit var viewgunDataBinding: com.example.guideforminimilitiadoodlegun.databinding.FragmentMaingunBinding
+    lateinit var listAdapter: GunsAdapter
+    val mainviewModel: MuhamedSAVViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        removeFullScreen()
+        removeFullScreengun()
         (activity as AppCompatActivity).supportActionBar?.show()
-        viewDataBinding = FragmentMainBinding.inflate(inflater, container, false).apply {
-            viewmodel = viewModel
-        }
-        return viewDataBinding.root
+        viewgunDataBinding =
+            com.example.guideforminimilitiadoodlegun.databinding.FragmentMaingunBinding.inflate(
+                inflater,
+                container,
+                false
+            ).apply {
+                viewmodel = mainviewModel
+            }
+        return viewgunDataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.navigateToDetailEvent.observe(viewLifecycleOwner,
+        mainviewModel.navigateToDetailGunEvent.observe(viewLifecycleOwner,
             EventObserver {
                 findNavController().navigate(R.id.action_mainFragment_to_bookDetailFragment)
             })
-        viewModel.showAdvertEvent.observe(viewLifecycleOwner, EventObserver {
-            if (viewModel.interstitialAd.isLoaded) {
-                viewModel.interstitialAd.show()
+        mainviewModel.showAdvertGunEvent.observe(viewLifecycleOwner, EventObserver {
+            if (mainviewModel.interstitialAdGun.isLoaded) {
+                mainviewModel.interstitialAdGun.show()
             } else {
                 Log.d("Nurs", "mainfrag The interstitial wasn't loaded yet.")
             }
         })
-        initAdapter()
+        initgunAdapter()
     }
 
     override fun onPause() {
-        viewModel.adView?.pause()
+        mainviewModel.adView?.pause()
         super.onPause()
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.adView?.resume()
+        mainviewModel.adView?.resume()
     }
 
     override fun onDestroy() {
-        viewModel.adView?.destroy()
+        mainviewModel.adView?.destroy()
         super.onDestroy()
     }
 }

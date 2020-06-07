@@ -12,14 +12,14 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 
-class MainApp : Application() {
+class MainAppGun : Application() {
     override fun onCreate() {
         super.onCreate()
         // Creating an extended library configuration.
-        val config =
-            YandexMetricaConfig.newConfigBuilder("91c8db8c-7ee6-4756-aace-0ecb5c8b4c10").build()
+        val configGun =
+            YandexMetricaConfig.newConfigBuilder("8fa7ab8f-dd06-4dd6-9a3a-4ad055fbe63f").build()
         // Initializing the AppMetrica SDK.
-        YandexMetrica.activate(applicationContext, config)
+        YandexMetrica.activate(applicationContext, configGun)
         // Automatic tracking of user activity.
         YandexMetrica.enableActivityAutoTracking(this)
         startKoin {
@@ -27,7 +27,7 @@ class MainApp : Application() {
             androidLogger()
 
             // use the Android context given there
-            androidContext(this@MainApp)
+            androidContext(this@MainAppGun)
 
             // load properties from assets/koin.properties file
             androidFileProperties()
@@ -39,7 +39,7 @@ class MainApp : Application() {
 
     private val appModules: Module = module {
         viewModel {
-            MainViewModel(this@MainApp)
+            MuhamedSAVViewModel(this@MainAppGun)
         }
     }
 }

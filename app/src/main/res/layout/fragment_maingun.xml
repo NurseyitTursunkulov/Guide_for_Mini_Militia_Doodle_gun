@@ -10,21 +10,21 @@
 
         <variable
             name="viewmodel"
-            type="com.example.guideforminimilitiadoodlegun.MainViewModel" />
+            type="com.example.guideforminimilitiadoodlegun.MuhamedSAVViewModel" />
 
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".bookList.MainFragment">
+        tools:context=".bookList.MainGunFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbar_gun"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|enterAlways|snap"
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/appbackground" />
+            android:src="@drawable/appbackgroundgun" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_books"
@@ -53,7 +53,7 @@
 
             android:visibility="visible"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:listitem="@layout/list_item_book" />
+            tools:listitem="@layout/list_item_bookgun" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

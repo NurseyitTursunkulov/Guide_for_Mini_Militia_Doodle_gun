@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_gun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/appbackground" />
+        android:src="@drawable/appbackgroundgun" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/content"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="9dp"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             app:cardCornerRadius="8dp"
@@ -87,7 +87,7 @@
                     android:text="@{bookInfo.title}"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
                     android:textColor="@color/text_secondary_dark"
-                    android:textSize="22sp"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +108,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="8dp"
                     android:textColor="@color/text_color_primary_dark"
-                    android:textSize="20sp"
+                    android:textSize="19sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

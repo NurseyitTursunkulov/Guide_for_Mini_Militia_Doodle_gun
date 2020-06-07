@@ -6,31 +6,31 @@ import androidx.fragment.app.Fragment
 import com.androidsx.rateme.RateMeDialog
 import com.androidsx.rateme.RateMeDialogTimer
 import com.example.guideforminimilitiadoodlegun.R
-import com.example.guideforminimilitiadoodlegun.bookList.getAdRequest
+import com.example.guideforminimilitiadoodlegun.bookList.gungetAdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.InterstitialAd
-import kotlinx.android.synthetic.main.activity_screen_slide.*
+import kotlinx.android.synthetic.main.activity_screen_slidegun.*
 import java.util.*
 
 
-fun BookDetailFragment.initPendingIndicatorView() {
-    val book = viewModel.navigateToDetailEvent.value?.peekContent()
+fun GunDetailFragment.initPendingIndicatorViewgun() {
+    val book = gunviewModel.navigateToDetailGunEvent.value?.peekContent()
 
-    pageIndicatorView.count =
+    gunpageIndicatorView.count =
         book?.listOfContentPerPage?.size ?: 1 // specify total count of indicators
 
-    pageIndicatorView.selection = 1
+    gunpageIndicatorView.selection = 1
 }
 
 fun Fragment.showBannerAdvert(adView: AdView, showAdvertState: Boolean) {
     if (showAdvertState) {
         adView.visibility = View.VISIBLE
-        val adRequest = getAdRequest()
+        val adRequest = gungetAdRequest()
         adView.loadAd(adRequest)
     }
 }
 
-fun Fragment.showRateMeDialog() {
+fun Fragment.showRateMeDialoggun() {
     RateMeDialogTimer.onStart(requireContext())
     if (RateMeDialogTimer.shouldShowRateDialog(requireContext(), 1, 2)) {
         RateMeDialog.Builder(requireActivity().packageName, "")
@@ -44,28 +44,28 @@ fun Fragment.showRateMeDialog() {
     }
 }
 
-fun showInterstitialAdvertSafe(interstitialAd: InterstitialAd) {
-    if (interstitialAd.isLoaded) {
-        interstitialAd.show()
+fun showInterstitialGunAdvertSafe(interstitialAdgun: InterstitialAd) {
+    if (interstitialAdgun.isLoaded) {
+        interstitialAdgun.show()
     } else {
         Log.d("Nurs", "first The interstitial wasn't loaded yet.")
     }
 }
 
-fun ScreenSlidePageFragment.getRandomImage(): Int {
-    val images =
+fun GunScreenSlidePageFragment.getRandomImagegun(): Int {
+    val imagesgun =
         intArrayOf(
-            R.drawable.foot1, //ok
-            R.drawable.foot2, //ok
-            R.drawable.foot3, //ok
-            R.drawable.foot4, //ok
-            R.drawable.foot5, //ok
-            R.drawable.foot6, //ok
-            R.drawable.foot7, //ok
-            R.drawable.foot8, //ok
-            R.drawable.foot9, //ok
-            R.drawable.foot10 //ok
+            R.drawable.gun1, //ok
+            R.drawable.gun2, //ok
+            R.drawable.gun3, //ok
+            R.drawable.gun4, //ok
+            R.drawable.gun5, //ok
+            R.drawable.gun6, //ok
+            R.drawable.gun7, //ok
+            R.drawable.gun8, //ok
+            R.drawable.gun9, //ok
+            R.drawable.gun10 //ok
         )
     val rand = Random()
-    return images[rand.nextInt(images.size)]
+    return imagesgun[rand.nextInt(imagesgun.size)]
 }
